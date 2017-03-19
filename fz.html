@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数封装</title>
+</head>
+<!-- <style type="text/css">
+#div1{width: 70px;height: 70px;background: red;position: absolute;top: 40px;left: 30px;}
+</style> -->
+<body>
+	<!-- <button id="button2">开始</button> -->
+	<!-- <button id="button1">开始</button> -->
+	<!-- <div id="div1"></div> -->
+	<script type="text/javascript">
+
+		// var oBut = document.getElementById('button1');
+		// var oBut2 = document.getElementById('button2');
+		// var oDiv = document.getElementById('div1');
+		// oDiv.time = null;
+
+		// oBut.onclick = function () {
+		// 	doMove(oDiv,'left',10,500,function () {
+		// 		doMove(oDiv,'top',10,500,function () {
+		// 			doMove(oDiv,'width',34,500)
+		// 		})
+		// 	})
+		// }   
+		// oBut2.onclick = function () {
+		// 	doMove(oDiv,'top',10,30)
+		// }  
+		str = '';
+		len = 20;
+		num = 0;
+		timer = ''
+		var oDiv = document.getElementsByTagName('div')
+		for (var i = 0; i < len; i++) {
+			str += '<div style = "width:50px;height:50px;background:red;position:absolute;top:0px;left:'+i*60+'px"></div>'
+		}
+		document.body.innerHTML=str
+		document.onclick = function () {
+			timer = setInterval(function () {
+				doMove(oDiv[num],'top',20,500)
+				num ++
+				if (num === len) {
+				clearInterval(timer)
+				} 
+			},100)
+		}
+
+
+
+		function doMove(obj,attr,dis,stp,endFn) {
+			dis = parseInt(getStyle(obj,attr)) < stp?dis:-dis
+			clearInterval(obj.time);
+			obj.time = setInterval(function () {
+				var dista = parseInt(getStyle(obj,attr)) + dis;
+				if (dista > stp && dis>0 || dista < stp && dis<0) {
+					dista = stp;
+				}
+				obj.style[attr] = dista +'px';
+
+				if (dista == stp) {
+					clearInterval(obj.time);
+				}
+				// if (endFn) {
+				// 	endFn()
+				// }
+				endFn && endFn()
+			},60)
+		}
+		function getStyle(obj,attr) {
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		}
+	</script>
+</body>
+</html>

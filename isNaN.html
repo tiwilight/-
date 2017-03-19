@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	请输入QQ号码：
+	<input id="text" type="text"/>
+	<input id="button" type="button" value="确认"/>
+	<script type="text/javascript">
+			var button = document.getElementById('button')
+			var text = document.getElementById('text')
+			var str = ''
+			function isNum(s) {
+			  //var regu = "^([0-9]*)$";
+			  var regu = "^([0-9]*[.0-9])$"; // 小数测试
+			  var re = new RegExp(regu);
+			  if (s.search(re) != -1)
+			   return true;
+			  else
+			   return false;
+			 }
+			button.onclick = function () {
+				str = text.value
+				var FirstChar=str.substr(0,1);   //在字符串中抽取从 start 下标开始的指定数目的字符 substr(start,length)
+				if (str == '') {
+					alert('输入不能为空')
+				}else if (FirstChar=="0") {
+					alert('第一位不能为0')
+				}else if (isNaN(str)) {
+					alert('请输入数字')
+				}else if (str.length<3 || str.length>12) {
+					alert('请输入最少为3位 最多为12位的QQ号码')
+				}else if (isNum(str)) {
+					return(str)
+				}else{
+					alert('请输入整数')
+				}
+
+
+
+				
+			}
+	</script>
+</body>
+</html>

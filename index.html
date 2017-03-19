@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<style type="text/css">
+ul,h2{padding: 0;margin: 0;}
+li{list-style: none;}
+a{cursor: pointer;}
+#list{width: 240px;border: 1px solid #333;margin: 0 auto}
+#list.lis{}
+#list h2{height: 30px ;line-height: 30px;text-indent: 30px;background: url(images/1.png) no-repeat 5px center #999;color: #fff;background: #ccc}
+#list ul{display: none}
+#list ul li{line-height: 24px;border-bottom: 1px solid #333;text-indent: 24px;}
+#list ul.hover{background: #6ff}
+</style>
+<body>
+	<ul id="list">
+		<li id="lis">
+			<h2><a>我的好友</a></h2>
+			<ul>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+			</ul>
+		</li>
+		<li id="lis">
+			<h2><a>企业好友</a></h2>
+			<ul>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+			</ul>
+		</li>
+		<li id="lis">
+			<h2><a>黑名单</a></h2>
+			<ul>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+			</ul>
+		</li>
+	</ul>
+	<script type="text/javascript">
+		var oul = document.getElementById('list');
+		var ah2 = oul.getElementsByTagName('h2');
+		var aul = oul.getElementsByTagName('ul');
+		var arrli = [];
+			// 点击展开
+		 for (var i = 0 ; i < ah2.length ; i++) {
+		 	ah2[i].index = i;
+		 	ah2[i].onclick = function () {
+                if(this.className == ''){
+                    aul[this.index].style.display = 'block'
+                    ah2[this.index].style.background = '#999'
+                    this.className='active';  
+                }else{
+                    ah2[this.index].style.background = '#ccc'
+                    aul[this.index].style.display = 'none'
+                    this.className='';  
+                }
+		 		
+		 	};
+		 	// 找元素li
+		 	for (var i = 0; i < aul.length; i++) {
+		 		ali = aul[i].getElementsByTagName('li')
+		 		for (var j = 0; j < ali.length; i++) {
+		 			arrli.push(ali[j]);
+		 		}
+		 	}
+		 	for (var i = 0; i <arrli.length; i++) {
+		 		arrli[i].onclick(function () {
+                    for(var i = 0; i <arrli.length; i++){
+                        arrli[i].className='';
+                    }
+		 			this.className = 'hover';
+		 		})
+		 	}
+		 }
+	</script>
+</body>
+</html>

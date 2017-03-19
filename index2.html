@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器</title>
+</head>
+<style type="text/css">
+*{padding:0;margin:0;}
+li{list-style: none;}
+#concent{width: 500px;height: 300px;margin:0 auto;border: 1px solid #000;}
+#nav{width: 100%;height: 60px;background: red}
+#nav ul{width: 100%;height: 60px;margin:0;}
+#nav ul li{width: 100px;display: inline-block;line-height: 60px;font-size: 24px;text-align: center;}
+#bodybox{width: 100%;height: 240px;background: yellow;display: none;}
+#bodybox ul li{line-height: 40px;}
+.hover{background: #ccc;}
+
+</style>
+<body>
+	<div id="concent">
+		<div id="nav">
+			<ul>
+				<li><a>新闻</a></li>
+				<li><a>图片</a></li>
+			</ul>
+		</div>
+		<div id="bodybox">
+			<ul>
+				<li>"台独教母"向大陆提出拜访要求 国台办回应</li>
+				<li>"台独教母"向大陆提出拜访要求 国台办回应</li>
+				<li>"台独教母"向大陆提出拜访要求 国台办回应</li>
+				<li>"台独教母"向大陆提出拜访要求 国台办回应</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var nav = document.getElementById('nav');
+		var oli = nav.getElementsByTagName('li')
+		var index = oli.index()
+		var bodybox = document.getElementById('bodybox');
+		timer = null;
+		num = 0;
+
+		nav.onmouseover = show;
+		nav.onmouseout = hide;
+		bodybox.onmouseover = show;
+		bodybox.onmouseout = hide;
+
+		function show() {
+			clearTimeout(timer)
+			bodybox.style.display = 'block'
+		}
+		function hide() {
+			timer = setTimeout(function () {
+				bodybox.style.display = 'none'
+			},200);
+			
+		}
+		
+	</script>
+</body>
+</html>

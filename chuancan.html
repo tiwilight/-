@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="aUl">
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			<em>12元</em>
+			<span>总计：0元</span>
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			<em>8.5元</em>
+			<span>总计：0元</span>
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			<em>6元</em>
+			<span>总计：0元</span>
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			<em>13元</em>
+			<span>总计：0元</span>
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			<em>5元</em>
+			<span>总计：0元</span>
+			<p>商品总计0件，共花费了0元</p>
+			<p>最贵的商品0元</p>
+		</li>
+	</ul>
+	<script type="text/javascript">
+	window.onload = function () {
+
+	var aUl = document.getElementById('aUl');
+	var aLi = aUl.getElementsByTagName('li');
+	for (var i = 0; i < aLi.length; i++) {
+		fn1(aLi[i]);
+	}
+	function fn1(aLi) {
+		 var aInput = aLi.getElementsByTagName('input');
+		 var aStrong = aLi.getElementsByTagName('strong')[0];
+		 var aEm = aLi.getElementsByTagName('em')[0];
+		 var aSpan = aLi.getElementsByTagName('span')[0];
+		 n1 = Number(aStrong.innerHTML);
+		 n2 = parseFloat(aEm.innerHTML);
+	
+	 	aInput[0].onclick = function () {
+	 		n1 --
+	 		if (n1<0) {
+	 			n1=0
+	 		}
+	 		aStrong.innerHTML = n1
+	 		aSpan.innerHTML = '总计：' + n1*n2 + '元'
+	 	}
+	 	aInput[1].onclick = function () {
+	 		n1 ++
+	 		aStrong.innerHTML = n1
+	 		aSpan.innerHTML = '总计：' + n1*n2 + '元'
+	 	}
+	}
+	}
+	</script>
+</body>
+</html>

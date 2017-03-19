@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+#content{position: absolute;top:200px;left: 300px;width: 200px;height: 200px;background: red}
+</style>
+<body>
+	<div id="content"></div>
+<script type="text/javascript">
+	var oDiv = document.getElementById('content')
+	
+	oDiv.onclick = function () {
+		shake(oDiv,'left')
+	}
+		
+	function shake(obj,idr,endFn) {
+		var dis = parseInt(getStyle(oDiv,idr))
+		var arr = [];
+		oDiv.timer = null;
+		num = 0;
+		for (var i =20; i > 0; i-=2) {
+			arr.push(i,-i)
+		}
+		arr.push(0)
+		clearInterval(oDiv.time);
+		oDiv.timer = setInterval(function () {
+			oDiv.style[idr] = dis + arr[num] +'px';
+			num++;
+			if (num == arr.length) {clearInterval(oDiv.time)}
+		},30)
+		endFn && endFn()
+		function getStyle(obj,attr) {
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		}
+	}
+</script>
+</body>
+</html>

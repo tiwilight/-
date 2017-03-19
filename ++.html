@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>运算符</title>
+</head>
+<style type="text/css">
+li{list-style: none;display: inline-block;}
+a:hover{cursor:pointer;color: red }
+</style>
+<body>
+	<h2>评分</h2>
+	<ul>
+		<li><a>☆</a></li>
+		<li><a>☆</a></li>
+		<li><a>☆</a></li>
+		<li><a>☆</a></li>
+		<li><a>☆</a></li>
+	</ul>
+<script type="text/javascript">
+	var aLi = document.getElementsByTagName('li')
+	for (var i = 0; i < aLi.length ; i ++) {
+		aLi[i].onclick = function () {
+			this.style.backgroundColor = 'red'
+		}
+	}
+</script>
+</body>
+</html>
